@@ -1,0 +1,45 @@
+* {
+    box-sizing: border-box;
+}
+
+header h1 {
+    text-align: center;
+}
+
+section {
+    float: left;
+    width: 29%;
+    margin: 2%;
+    background-color: gray;
+    border: black solid 1px;
+}
+
+section p {
+    clear: both;
+    padding: 10px;
+}
+
+.food-title {
+    float: right;
+    border-left: black solid 1px;
+    border-bottom: black solid 1px;
+    width: 110px;
+    padding-bottom: 5px;
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    font-family: Calibri, sans-serif;
+}
+
+#foodTitleChicken {
+    background-color: indianred;
+}
+
+#foodTitleBeef {
+    color: white;
+    background-color: darkred;
+}
+
+#foodTitleSushi {
+    background-color: goldenrod;
+}
