@@ -8,6 +8,7 @@ body {
 }
 
 header h1 {
+    font-size: 1.75em;
     text-align: center;
 }
 
@@ -16,6 +17,14 @@ section {
     background-color: gray;
     border: black solid 1px;
     margin: 2%;
+
+    /* additional constraints for assignment 2 as defined in github */
+    height: 200px;
+    overflow: hidden;
+}
+
+section:hover {
+    overflow-y: scroll;
 }
 
 section p {
@@ -34,21 +43,35 @@ section p {
     font-weight: bold;
 }
 
-#foodTitleChicken {
+#foodTitleChicken, #foodTitleChickenMobile {
     background-color: indianred;
 }
 
-#foodTitleBeef {
+#foodTitleBeef, #foodTitleBeefMobile {
     color: white;
     background-color: darkred;
 }
 
-#foodTitleSushi {
+#foodTitleSushi, #foodTitleSushiMobile {
     background-color: goldenrod;
 }
 
-/* media queries */
+#pageTitleMobile {
+    /* hide the mobile page title by default. enabled in mobile view */
+    visibility: hidden;
+    position: absolute;
+    font-family: Papyrus, cursive;
+    font-size: 1em;
+    text-align: left;
+    margin-left: 2%;
+}
 
+#foodTitleChickenMobile, #foodTitleBeefMobile, #foodTitleSushiMobile {
+    visibility: hidden;
+    position: absolute;
+}
+
+/* media queries */
 /* desktop browser */
 @media (min-width: 992px) {
     section {
@@ -65,5 +88,29 @@ section p {
 
 /* mobile */
 @media (max-width: 767px) {
+    #pageTitleMobile, #foodTitleChickenMobile, #foodTitleBeefMobile, #foodTitleSushiMobile {
+        /* hide the mobile page title by default. enabled in mobile view */
+        visibility: visible;
+        position: relative;
+    }
 
+    #pageTitleWide, #foodTitleChicken, #foodTitleBeef, #foodTitleSushi {
+        visibility: hidden;
+        position: absolute;
+    }
+
+    section p {
+        text-align: center;
+    }
+
+    .food-title {
+        width:100%;
+        float: none;
+        border-bottom: black solid 1px;
+        padding-bottom: 5px;
+        text-align: center;
+        font-size: 1.2em;
+        font-weight: bold;
+    }
 }
+
