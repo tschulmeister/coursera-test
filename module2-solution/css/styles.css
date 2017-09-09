@@ -1,5 +1,10 @@
+/* general styling */
 * {
     box-sizing: border-box;
+}
+
+body {
+    font-family: Calibri, sans-serif;
 }
 
 header h1 {
@@ -8,10 +13,9 @@ header h1 {
 
 section {
     float: left;
-    width: 29%;
-    margin: 2%;
     background-color: gray;
     border: black solid 1px;
+    margin: 2%;
 }
 
 section p {
@@ -28,7 +32,6 @@ section p {
     text-align: center;
     font-size: 1.2em;
     font-weight: bold;
-    font-family: Calibri, sans-serif;
 }
 
 #foodTitleChicken {
@@ -42,4 +45,25 @@ section p {
 
 #foodTitleSushi {
     background-color: goldenrod;
+}
+
+/* media queries */
+
+/* desktop browser */
+@media (min-width: 992px) {
+    section {
+        width: 29%;
+    }
+}
+
+/* tablets */
+@media (min-width: 768px) and (max-width: 991px) {
+    #section1, #section2 {
+        width: 46%;
+    }
+}
+
+/* mobile */
+@media (max-width: 767px) {
+
 }
