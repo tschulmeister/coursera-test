@@ -83,6 +83,11 @@ section p {
 
 /* END HEADER */
 
+
+.back-to-top {
+    text-decoration: none;
+}
+
 /********** Large devices only **********/
 @media (min-width: 1200px) {
 
