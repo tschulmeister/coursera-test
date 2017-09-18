@@ -7,61 +7,20 @@ body {
     font-family: Calibri, sans-serif;
 }
 
-
-section {
-    float: left;
-    background-color: gray;
+.food-section {
+    background-color: #FFE0B2;
     border: black solid 1px;
-    margin: 2%;
+    margin-bottom: 20px;
 }
+
 section p {
     clear: both;
     padding: 10px;
 }
 
-.food-title {
-    float: right;
-    border-left: black solid 1px;
-    border-bottom: black solid 1px;
-    width: 110px;
-    padding-bottom: 5px;
-    text-align: center;
-    font-size: 1.2em;
-    font-weight: bold;
-}
-
-#foodTitleChicken, #foodTitleChickenMobile {
-    background-color: indianred;
-}
-
-#foodTitleBeef, #foodTitleBeefMobile {
-    color: white;
-    background-color: darkred;
-}
-
-#foodTitleSushi, #foodTitleSushiMobile {
-    background-color: goldenrod;
-}
-
-#pageTitleMobile {
-    /* hide the mobile page title by default. enabled in mobile view */
-    visibility: hidden;
-    position: absolute;
-    font-family: Papyrus, cursive;
-    font-size: 1em;
-    text-align: left;
-    margin-left: 2%;
-}
-
-#foodTitleChickenMobile, #foodTitleBeefMobile, #foodTitleSushiMobile {
-    visibility: hidden;
-    position: absolute;
-}
-
-
 /** HEADER **/
 #header-nav {
-    background-color: #7a98f6;
+    background-color: #FF9800;
     border-radius: 0;
     border: 0;
 }
@@ -70,22 +29,25 @@ section p {
 }
 
 .navbar-brand h1 { /* Restaurant name */
-    color: #7c0a00;
+    color: #212121;
     text-transform: uppercase;
     font-weight: bold;
     text-shadow: 1px 1px 1px #222;
     margin-top: 0;
     margin-bottom: 0;
 }
+
 .navbar-brand a:hover, .navbar-brand a:focus {
     text-decoration: none;
 }
+
 .navbar-brand p { /* Kosher cert */
     color: #000;
     text-transform: uppercase;
     font-size: .7em;
     margin-top: 15px;
 }
+
 .navbar-brand p span { /* Star-K */
     vertical-align: middle;
 }
@@ -93,40 +55,32 @@ section p {
 #nav-list {
     margin-top: 10px;
 }
+
 #nav-list a {
     color: #951C49;
     text-align: center;
 }
+
 #nav-list a:hover {
     background: #E7E7E7;
 }
+
 #nav-list a span {
     font-size: 1.8em;
-}
-
-#phone {
-    margin-top: 5px;
-}
-#phone a { /* Phone number */
-    text-align: right;
-    padding-bottom: 0;
-}
-#phone div { /* We Deliver */
-    color: #557c3e;
-    text-align: right;
-    padding-right: 15px;
 }
 
 .navbar-header button.navbar-toggle, .navbar-header .icon-bar {
     border: 1px solid #61122f;
 }
+
 .navbar-header button.navbar-toggle {
-    float:right;
+    float: right;
 }
 
-.navbar-header  {
+.navbar-header {
     padding-bottom: 25px;
 }
+
 /* END HEADER */
 
 /********** Large devices only **********/
@@ -146,7 +100,7 @@ section p {
 
 /********** Extra small devices only **********/
 @media (max-width: 767px) {
-    .navbar-header  {
+    .navbar-header {
         padding-bottom: 0px;
     }
 
@@ -155,9 +109,11 @@ section p {
         padding-top: 10px;
         height: 80px;
     }
+
     .navbar-brand h1 { /* Restaurant name */
 
     }
+
     .navbar-brand p img { /* Star-K */
         height: 20px;
     }
@@ -165,26 +121,12 @@ section p {
     #collapsable-nav a { /* Collapsed nav menu text */
         font-size: 1.2em;
     }
+
     #collapsable-nav a span { /* Collapsed nav menu glyph */
         font-size: 1em;
         margin-right: 5px;
     }
 
-    #call-btn > a {
-        font-size: 1.5em;
-        display: block;
-        margin: 0 20px;
-        padding: 10px;
-        border: 2px solid #fff;
-        background-color: #f6b319;
-        color: #951c49;
-    }
-    #xs-deliver {
-        margin-top: 5px;
-        font-size: .7em;
-        letter-spacing: .1em;
-        text-transform: uppercase;
-    }
     /* End Header */
 
 }
