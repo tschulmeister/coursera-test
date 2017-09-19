@@ -7,15 +7,14 @@ body {
     font-family: Calibri, sans-serif;
 }
 
+.food-section-container {
+    padding-bottom: 20px;
+}
+
 .food-section {
     background-color: #FFE0B2;
     border: black solid 1px;
-    margin-bottom: 20px;
-}
-
-section p {
-    clear: both;
-    padding: 10px;
+    padding: 20px;
 }
 
 /** HEADER **/
