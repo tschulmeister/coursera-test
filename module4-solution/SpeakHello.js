@@ -8,5 +8,9 @@ nsHello.speakWord = speakWord;
         console.log(nsHello.speakWord + " " + name);
     };
 
+    helloSpeaker.speakSimple = function speakSimple(name) {
+        return nsHello.speakWord + " " + name;
+    };
+
     window.helloSpeaker = helloSpeaker;
 })(window);

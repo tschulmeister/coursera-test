@@ -8,5 +8,9 @@ nsGoodBye.speakWord = speakWord;
         console.log(nsGoodBye.speakWord + " " + name);
     };
 
+    byeSpeaker.speakSimple = function speakSimple(name) {
+        return nsGoodBye.speakWord + " " + name;
+    };
+
     window.byeSpeaker = byeSpeaker;
 })(window);
