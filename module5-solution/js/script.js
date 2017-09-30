@@ -22,6 +22,9 @@ $(function () { // Same as document.addEventListener("DOMContentLoaded"...
         "https://davids-restaurant.herokuapp.com/menu_items.json?category=";
     var menuItemsTitleHtml = "snippets/menu-items-title.html";
     var menuItemHtml = "snippets/menu-item.html";
+    var aboutPageHtml = "snippets/about-snippet.html";
+
+    var currentHighlightedButton = null;
 
 // Convenience function for inserting innerHTML for 'select'
     var insertHtml = function (selector, html) {
@@ -47,18 +50,52 @@ $(function () { // Same as document.addEventListener("DOMContentLoaded"...
 
 // Remove the class 'active' from home and switch to Menu button
     var switchMenuToActive = function () {
-        // Remove 'active' from home button
-        var classes = document.querySelector("#navHomeButton").className;
-        classes = classes.replace(new RegExp("active", "g"), "");
-        document.querySelector("#navHomeButton").className = classes;
+        removeCurrentHighlight();
+
+        currentHighlightedButton = document.querySelector("#navMenuButton");
 
         // Add 'active' to menu button if not already there
-        classes = document.querySelector("#navMenuButton").className;
+        var classes = document.querySelector("#navMenuButton").className;
         if (classes.indexOf("active") === -1) {
             classes += " active";
             document.querySelector("#navMenuButton").className = classes;
         }
     };
+
+    var switchAboutToActive = function () {
+        removeCurrentHighlight();
+        currentHighlightedButton = document.querySelector("#navAboutButton");
+
+        // Add 'active' to about button if not already there
+        var classes = document.querySelector("#navAboutButton").className;
+        if (classes.indexOf("active") === -1) {
+            classes += " active";
+            document.querySelector("#navAboutButton").className = classes;
+        }
+    };
+
+    function removeCurrentHighlight() {
+        // Remove 'active' from currently highlighted button
+        if (currentHighlightedButton !== null) {
+            var classes = currentHighlightedButton.className;
+            classes = classes.replace(new RegExp("active", "g"), "");
+            currentHighlightedButton.className = classes;
+        }
+    }
+
+    function createRandomReview(aboutPageHtml) {
+        var numStars = generateRandomRating();
+        var replacedHtml = insertProperty(aboutPageHtml, "numStars", numStars);
+        for (var i = 1; i < 6; i++) {
+            var currentStar = "star" + i;
+            if (numStars >= i)
+                replacedHtml = insertProperty(replacedHtml, currentStar, "fa fa-star");
+            else
+                replacedHtml = insertProperty(replacedHtml, currentStar, "fa fa-star-o");
+        }
+
+        return replacedHtml;
+    }
 
 // On page load (before images or CSS)
     document.addEventListener("DOMContentLoaded", function (event) {
@@ -139,6 +176,14 @@ $(function () { // Same as document.addEventListener("DOMContentLoaded"...
         return categories[randomArrayIndex];
     }
 
+    // load the about page
+    dc.loadAboutPage = function () {
+        showLoading("#main-content");
+        $ajaxUtils.sendGetRequest(
+            aboutPageHtml,
+            buildAndShowAboutPageHTML,
+            false);
+    };
 
 // Load the menu categories view
     dc.loadMenuCategories = function () {
@@ -211,6 +256,13 @@ $(function () { // Same as document.addEventListener("DOMContentLoaded"...
 
         finalHtml += "</section>";
         return finalHtml;
+    }
+
+    function buildAndShowAboutPageHTML(aboutPage) {
+        // Switch CSS class active to about button
+        switchAboutToActive();
+        aboutPage = createRandomReview(aboutPage);
+        insertHtml("#main-content", aboutPage);
     }
 
 
@@ -338,6 +390,9 @@ $(function () { // Same as document.addEventListener("DOMContentLoaded"...
         return html;
     }
 
+    function generateRandomRating() {
+        return Math.floor(Math.random() * 5 + 1);
+    }
 
     global.$dc = dc;
 
