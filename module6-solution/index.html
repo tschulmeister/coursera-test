@@ -11,6 +11,16 @@
             font-size: 1.3em;
             font-weight: bold;
         }
+
+        .good-input {
+            color: green;
+            border: 1px solid green;
+        }
+
+        .bad-input {
+            color: red;
+            border: 1px solid red;
+        }
     </style>
 </head>
 <body>
@@ -18,6 +28,7 @@
     <h1>Lunch Checker</h1>
 
     <div class="form-group">
+        <!-- this code does NOT consider and empty item, i.e., , , as an item towards to the count -->
         <input id="lunch-menu" type="text"
                placeholder="list comma separated dishes you usually have for lunch"
                class="form-control"
@@ -27,7 +38,9 @@
         <button class="btn btn-default" ng-click="checkLunch(lunchItems)">Check If Too Much</button>
     </div>
     <div class="form-group message">
-        {{lunchMessage}}
+        <span ng-class="{'good-input':goodInput, 'bad-input':badInput}">
+            {{lunchMessage}}
+        </span>
     </div>
 </div>
 
