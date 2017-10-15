@@ -5,7 +5,8 @@
         .controller('ToBuyController', ToBuyController)
         .controller('AlreadyBoughtController', AlreadyBoughtController)
         .service('ShoppingListCheckOffService', ShoppingListCheckOffService)
-        .factory('ItemFactory', ItemFactory);
+        .factory('ItemFactory', ItemFactory)
+        .filter('itemPrice', ItemPriceFilter);
 
     ToBuyController.$inject = ['ShoppingListCheckOffService'];
 
@@ -32,13 +33,13 @@
 
         // List of shopping items
         var toBuyItems = [
-            ItemFactory("a", 1),
-            ItemFactory("b", 2),
-            ItemFactory("c", 3),
-            ItemFactory("d", 4),
-            ItemFactory("e", 5),
-            ItemFactory("f", 6),
-            ItemFactory("g", 7),
+            ItemFactory("a", 1, 1),
+            ItemFactory("b", 2, 2),
+            ItemFactory("c", 3, 3),
+            ItemFactory("d", 4, 4),
+            ItemFactory("e", 5, 5),
+            ItemFactory("f", 6, 6),
+            ItemFactory("g", 7, 7),
         ];
         var boughtItems = [];
 
@@ -57,12 +58,19 @@
     }
 
     function ItemFactory() {
-        return function (name, quantity) {
+        return function (name, quantity, pricePerItem) {
             return {
                 name: name,
-                quantity: quantity
+                quantity: quantity,
+                pricePerItem: pricePerItem
             };
         };
+    }
+
+    function ItemPriceFilter() {
+        return function (item) {
+            return "$$$" + (item.quantity * item.pricePerItem);
+        }
     }
 
 })();
