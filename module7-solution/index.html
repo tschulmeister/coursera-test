@@ -28,6 +28,7 @@
                     </button>
                 </li>
             </ul>
+            <!-- label which only appears when there are no items to buy -->
             <div ng-if="buyController.items.length === 0" class="emptyMessage">Everything is bought!</div>
         </div>
 
@@ -39,6 +40,8 @@
                     Bought {{item.quantity}} {{item.name}} for total price of {{item | itemPrice}}
                 </li>
             </ul>
+
+            <!-- label which only appears when there are no bought items -->
             <div ng-if="boughtController.items.length === 0" class="emptyMessage">Nothing bought yet.</div>
         </div>
     </div>
