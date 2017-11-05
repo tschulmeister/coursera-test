@@ -15,7 +15,7 @@
         return {
             templateUrl: 'directives/foundItems.html',
             scope: {
-                found: '=',
+                found: '<',
                 onRemove: '&'
             }
         };
