@@ -12,19 +12,21 @@
 <div class="container" ng-controller="NarrowItDownController as narrowController">
     <h1>Narrow Down Your Chinese Menu Choice</h1>
 
-    <div class="form-group">
-        <input type="text" placeholder="search term" class="form-control" ng-model="searchTerm">
-    </div>
-    <div class="form-group narrow-button">
-        <button class="btn btn-primary"
-                ng-click="narrowController.searchForItems(searchTerm)">
-            Narrow It Down For Me!
-        </button>
-    </div>
+    <form ng-submit="narrowController.searchForItems(searchTerm)">
+        <div class="form-group">
+            <input type="text" placeholder="search term" class="form-control" ng-model="searchTerm">
+        </div>
+        <div class="form-group narrow-button">
+            <button class="btn btn-primary">
+                Narrow It Down For Me!
+            </button>
+        </div>
+    </form>
 
-    <div style="clear: both;">
-        <found-items found="narrowController.found"></found-items>
-    </div>
+    <found-items
+            found="narrowController.found"
+            on-remove="narrowController.removeItem(index)">
+    </found-items>
 </div>
 
 </body>

@@ -7,15 +7,17 @@
         .directive('foundItems', FoundItemsDirective)
         .constant('MenuItemsUrl', "https://davids-restaurant.herokuapp.com/menu_items.json");
 
+
+    // ---------------------
+    // directive which displays all "found" items
+    // ---------------------
     function FoundItemsDirective() {
         return {
-            templateUrl: 'directives/foundItems.html'
-            /*            scope: {
-                            found: '<'
-                        },
-                        controller: NarrowItDownController,
-                        controllerAs: 'narrowController',
-                        bindToController: true*/
+            templateUrl: 'directives/foundItems.html',
+            scope: {
+                found: '=',
+                onRemove: '&'
+            }
         };
     }
 
@@ -27,7 +29,7 @@
 
     function NarrowItDownController(MenuSearchService) {
         var narrowController = this;
-        narrowController.found = [];
+        narrowController.found = null;
 
         narrowController.searchForItems = function (searchTerm) {
             MenuSearchService.getMatchedMenuItems(searchTerm).then(function (result) {
@@ -37,19 +39,23 @@
                         return menuItem.name.toLowerCase().indexOf(searchTerm) !== -1;
                     });
             });
+        };
 
-            console.log("num found: " + narrowController.found.length)
-        }
+        narrowController.removeItem = function (index) {
+            if (narrowController.found)
+                narrowController.found.splice(index, 1);
+        };
     }
 
     // ---------------------
-    // service for menu search
+    // service for menu search. executes the REST call to get the items
     // ---------------------
     MenuSearchService.$inject = ['$http', 'MenuItemsUrl'];
 
     function MenuSearchService($http, MenuItemsUrl) {
         var searchService = this;
 
+        // return a promise which will contain all menu items
         searchService.getMatchedMenuItems = function (searchTerm) {
             return $http({
                 method: "GET",
