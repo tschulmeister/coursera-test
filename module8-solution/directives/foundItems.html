@@ -1,0 +1,10 @@
+<h3>Found Items</h3>
+<ol>
+    <li ng-repeat="item in narrowController.found">
+        <!--menu item, its short_name, and the description-->
+        {{ item.short_name }} ({{ item.name }}): {{ item.description }}
+<!--        <button ng-click="list.badRemove($index);">Bad Remove Item</button>
+        <button ng-click="list.onRemove({index: $index});">Remove Item</button>-->
+    </li>
+</ol>
+<div class="error" ng-if="!narrowController.found || narrowController.found.length==0">No Items</div>
