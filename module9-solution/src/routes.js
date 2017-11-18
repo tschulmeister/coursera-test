@@ -34,10 +34,13 @@
 
             // Items page
             .state('items', {
-                // url: '/',
+                url: '/items/{categoryId}',
                 templateUrl: 'src/template/items.template.html',
-                params: {
-                    itemId: null
+                controller: 'ItemsController as itemCtrl',
+                resolve: {
+                    itemsResult: ['MenuDataService', '$stateParams', function (MenuDataService, $stateParams) {
+                        return MenuDataService.getItemsForCategory($stateParams.categoryId);
+                    }]
                 }
             });
     }

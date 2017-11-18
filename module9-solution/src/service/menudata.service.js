@@ -22,10 +22,13 @@
         };
 
         menuService.getItemsForCategory = function (categoryShortName) {
-            return $http({
-                method: "GET",
-                url: ItemsForCategoryUrl + categoryShortName
-            });
+            if (!categoryShortName)
+                return null;
+            else
+                return $http({
+                    method: "GET",
+                    url: ItemsForCategoryUrl + categoryShortName
+                });
         };
     }
 
