@@ -20,10 +20,16 @@
                 templateUrl: 'src/template/home.template.html'
             })
 
- /*           // Categories page
+            // Categories page
             .state('categories', {
                 url: '/categories',
-                templateUrl: 'src/template/categories.template.html'
+                templateUrl: 'src/template/categories.template.html',
+                controller: 'CategoriesController as catCtrl',
+                resolve: {
+                    categoriesResult: ['MenuDataService', function (MenuDataService) {
+                        return MenuDataService.getAllCategories();
+                    }]
+                }
             })
 
             // Items page
@@ -33,7 +39,7 @@
                 params: {
                     itemId: null
                 }
-            });*/
+            });
     }
 
 })();
