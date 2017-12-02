@@ -1,1 +1,30 @@
-all about meeeee
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div ng-if="!myInfoCtrl.user">
+                Not Signed Up Yet.
+                <a ui-sref="public.signup">
+                    Sign up Now!
+                </a>
+            </div>
+            <div ng-if="myInfoCtrl.user">
+                <h2>Your Registered Information</h2>
+                <dl>
+                    <dt>First Name</dt>
+                    <dd>{{myInfoCtrl.user.firstName}}</dd>
+                    <dt>Last Name</dt>
+                    <dd>{{myInfoCtrl.user.lastName}}</dd>
+                    <dt>Email Address</dt>
+                    <dd>{{myInfoCtrl.user.emailAddress}}</dd>
+                    <dt>Phone Number</dt>
+                    <dd>{{myInfoCtrl.user.phoneNumber}}</dd>
+                    <dt>Favorite Dish</dt>
+                    <dd>{{myInfoCtrl.favoriteDish.name}}</dd>
+                    <dd>{{myInfoCtrl.favoriteDish.desc}}</dd>
+                    <dd><img class="img-responsive" width="250" height="150"
+                             ng-src="{{myInfoCtrl.favoriteDish.img}}"></dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
