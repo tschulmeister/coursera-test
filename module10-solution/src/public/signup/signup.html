@@ -47,10 +47,10 @@
                     <label for="userFavoriteDish">Favorite Dish</label>
                     <input class="form-control" id="userFavoriteDish" name="userFavoriteDish"
                            placeholder="What's your favorite dish?" required
-                           ng-model="signupCtrl.user.favoriteDish">
-                    <div ng-if="signupCtrl.noSuchDishError" class="ng-invalid">
-                        No such menu number exists
-                    </div>
+                           ng-model="signupCtrl.user.favoriteDish"
+                           favorite-dish>
+                    <span ng-show="signupForm.$pending.userFavoriteDish">Checking favorite item...</span>
+                    <span ng-show="signupForm.$error.userFavoriteDish">No such menu number exists</span>
                 </div>
 
                 <button type="submit" class="btn btn-primary"
