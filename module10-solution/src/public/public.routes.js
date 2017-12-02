@@ -28,7 +28,7 @@
                 url: '/signup',
                 templateUrl: 'src/public/signup/signup.html',
                 controller: 'SignupController',
-                controllerAs: 'signupCtrl',
+                controllerAs: 'signupCtrl'
             })
             .state('public.menu', {
                 url: '/menu',

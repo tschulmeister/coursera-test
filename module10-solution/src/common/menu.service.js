@@ -16,6 +16,10 @@
             });
         };
 
+        service.getMenuItem = function (shortName) {
+            return $http.get(ApiPath + '/menu_items/' + shortName + '.json');
+        };
+
 
         service.getMenuItems = function (category) {
             var config = {};

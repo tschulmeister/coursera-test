@@ -6,7 +6,7 @@
                     <label for="userFirstName">First Name</label>
                     <input class="form-control" id="userFirstName" name="userFirstName" placeholder="Enter first name"
                            required
-                           ng-model="$ctrl.firstName">
+                           ng-model="signupCtrl.user.firstName">
                     <div ng-if="signupForm.userFirstName.$error.required && signupForm.userFirstName.$touched">
                         Please enter first name
                     </div>
@@ -15,14 +15,14 @@
                     <label for="userLastName">Last Name</label>
                     <input class="form-control" id="userLastName" name="userLastName" placeholder="Enter last name"
                            required
-                           ng-model="$ctrl.lastName">
+                           ng-model="signupCtrl.user.lastName">
                 </div>
                 <div class="form-group">
                     <label for="userEmailAddress">Email address</label>
                     <input type="email" class="form-control" id="userEmailAddress" name="userEmailAddress"
                            aria-describedby="emailHelp"
                            placeholder="Enter email" required
-                           ng-model="$ctrl.emailAddress">
+                           ng-model="signupCtrl.user.emailAddress">
                     <div ng-if="signupForm.userEmailAddress.$invalid && signupForm.userEmailAddress.$touched">
                         Please enter a valid email address: handle@domain format
                     </div>
@@ -34,7 +34,7 @@
                     <input type="text" class="form-control" id="userPhoneNumber" name="userPhoneNumber"
                            aria-describedby="phoneHelp"
                            placeholder="Enter phone number (###-###-####)" required
-                           ng-model="$ctrl.phoneNumber"
+                           ng-model="signupCtrl.user.phoneNumber"
                            pattern="(\d{3})-(\d{3})-(\d{4})">
                     <div ng-if="signupForm.userPhoneNumber.$invalid && signupForm.userPhoneNumber.$touched">
                         Please enter a valid phone number in the format ###-###-####.
@@ -47,12 +47,16 @@
                     <label for="userFavoriteDish">Favorite Dish</label>
                     <input class="form-control" id="userFavoriteDish" name="userFavoriteDish"
                            placeholder="What's your favorite dish?" required
-                           ng-model="$ctrl.favoriteDish">
+                           ng-model="signupCtrl.user.favoriteDish">
+                    <div ng-if="signupCtrl.noSuchDishError" class="ng-invalid">
+                        No such menu number exists
+                    </div>
                 </div>
 
                 <button type="submit" class="btn btn-primary"
                         ng-disabled="signupForm.$invalid"
-                        ng-click="$ctrl.signup()">Submit
+                        ng-click="signupCtrl.signup()">
+                    Submit
                 </button>
             </form>
         </div>
