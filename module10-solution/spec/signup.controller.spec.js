@@ -35,8 +35,16 @@ describe("SignupController test", function () {
         $httpBackend.whenGET(ApiPath + '/menu_items/foo.json').respond(400, null);
         signupController.checkItem("foo");
         $httpBackend.flush();
-
         expect(signupController.noSuchDishError).toBe(true);
+    });
+
+    it("should set a variable indicating that the item exists", function () {
+        expect(signupController.noSuchDishError).toBe(false);
+
+        $httpBackend.whenGET(ApiPath + '/menu_items/foo.json').respond(200, '');
+        signupController.checkItem("foo");
+        $httpBackend.flush();
+        expect(signupController.noSuchDishError).toBe(false);
     });
 
 });
