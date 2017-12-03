@@ -11,10 +11,15 @@
         var signupCtrl = this;
 
         signupCtrl.user = null;
+        signupCtrl.noSuchDishError = false;
 
         signupCtrl.signup = function () {
             // see if the given menu item exists
-            MenuService.getMenuItem(signupCtrl.user.favoriteDish)
+            signupCtrl.checkItem(signupCtrl.user.favoriteDish);
+        };
+
+        signupCtrl.checkItem = function (itemShortName) {
+            MenuService.getMenuItem(itemShortName)
                 .then(function (rest) {
                     signupCtrl.noSuchDishError = false;
                     UserService.setUser(signupCtrl.user);
@@ -23,7 +28,7 @@
                 .catch(function (fallback) {
                     signupCtrl.noSuchDishError = true;
                 });
-        };
+        }
     }
 
     FavoriteDishDirective.$inject = ['MenuService', '$q'];
